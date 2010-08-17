@@ -14,6 +14,8 @@
 	or Single File
 	
 	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/inc/css/compress.php?single=file" type="text/css" media="screen" />
+	
+	Available on GIT: http://github.com/envex/CSS-Compressor
 
 */
 
