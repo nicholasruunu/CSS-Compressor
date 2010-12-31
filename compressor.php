@@ -31,23 +31,12 @@ function compress($buffer) {
 
 ob_start("compress");
 
-//Do we need to include just one stylesheet?
-if(isset($_GET['single'])){
+/*
 
-	include($_GET['single']);
+	Main CSS
 
-}else{
+*/
 
-	/*
-	
-		Main CSS
-	
-	*/
-	
-	include();
-
-}
+include('your-css.css');
 
 ob_end_flush();
-
-?>
