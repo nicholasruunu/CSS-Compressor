@@ -9,7 +9,7 @@
 	
 	Usage:
 	
-	    <link rel="stylesheet" href="/css/compress.php?css=one.css,two.css" type="text/css" media="screen" />
+	    <link rel="stylesheet" href="/css/compressor.php?css=one.css,two.css" type="text/css" media="screen" />
 	    
 	In compressor.php
 	
@@ -46,7 +46,7 @@ if(isset($_GET['css']))
 		}
 		else
 		{
-			echo "File: {$css} does not exists.";
+			echo "File: {$css} does not exist.";
 		}
 	}
 }
