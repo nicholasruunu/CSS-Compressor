@@ -32,10 +32,21 @@ function compress($buffer) {
 
 if(isset($_GET['css']))
 {
+	/* remove %, /, \, ' and " from query string */
+	$_GET['css'] = preg_replace('/[%\/\\\'\"]/', '', $_GET['css']);
+	
 	foreach(explode(',', $_GET['css']) as $css)
 	{
-		ob_start("compress");
-		include($css);
-		ob_end_flush();
+		/* file extension must be css */
+		if(file_exists($css) AND pathinfo($css, PATHINFO_EXTENSION) == 'css')
+		{
+			ob_start("compress");
+			include($css);
+			ob_end_flush();
+		}
+		else
+		{
+			echo "File: {$css} does not exists.";
+		}
 	}
 }
