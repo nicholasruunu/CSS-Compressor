@@ -7,13 +7,14 @@
 	This is not my original script, I found and modified it.
 	I can't remember where I found it though, it's been a while :/
 	
-	Usage (in template file):
+	Usage:
 	
-	    <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/inc/css/compress.php" type="text/css" media="screen" />
+	    <link rel="stylesheet" href="/css/compress.php?css=one.css,two.css" type="text/css" media="screen" />
 	    
 	In compressor.php
 	
-	Add all your css files as separate includes (relative to current folder)
+	Add all your css files after ?css= seperated by comma, ex. compress.php?css=one.css,two.css,three.css ...
+	relative to your compress.php
 	
 	Available on GIT: http://github.com/envex/CSS-Compressor
 
@@ -29,14 +30,12 @@ function compress($buffer) {
 	return $buffer;
 }
 
-ob_start("compress");
-
-/*
-
-	Main CSS
-
-*/
-
-include('your-css.css');
-
-ob_end_flush();
+if(isset($_GET['css']))
+{
+	foreach(explode(',', $_GET['css']) as $css)
+	{
+		ob_start("compress");
+		include($css);
+		ob_end_flush();
+	}
+}
